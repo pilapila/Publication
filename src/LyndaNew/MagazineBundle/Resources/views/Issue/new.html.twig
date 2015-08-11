@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body  %}
+    <h1>Issue creation</h1>
+
+    {{ form(form) }}
+
+         <a class="btn btn-default btn-xs" href="{{ path('issue') }}">
+            Back to the list
+        </a>
+
+{% endblock %}

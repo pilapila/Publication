@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Publication list</h1>
+
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Picture</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td valign="top"><a href="{{ path('publication_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td valign="top">{{ entity.name }}</td>
+                <td valign="top">{% if entity.picture %}<img class="img-responsive"
+                       src="{{ asset(entity.getPictureWeb) }}"/>{% endif %}</td>
+                <td valign="top">
+                        <a class="btn btn-default btn-xs" href="{{ path('publication_show', { 'id': entity.id }) }}">show</a>
+                        <a class="btn btn-default btn-xs" href="{{ path('publication_edit', { 'id': entity.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+            <a class="btn btn-default" href="{{ path('publication_new') }}">
+                Create a new entry
+            </a>
+    {% endblock %}
